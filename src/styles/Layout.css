@@ -1,0 +1,9 @@
+.layout {
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
+  }
+  
+  .layout__title {
+    margin-top: 0;
+  }
+  
