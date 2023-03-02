@@ -4,13 +4,12 @@ import Compteur from './pages/Compteur';
 import Chronometre from './pages/Chronometre';
 import Minuteur from './pages/Minuteur';
 import HomePage from './pages/HomePage';
-import Navbar from './components/Navbar';
 import Layout from './components/Layout';
 import './styles/App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/compteur" element={<Layout><Compteur /></Layout>} />
