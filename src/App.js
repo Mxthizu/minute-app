@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route} from "react-router-dom";
 import Compteur from './pages/Compteur';
 import Chronometre from './pages/Chronometre';
 import Minuteur from './pages/Minuteur';
@@ -9,14 +9,14 @@ import './styles/App.css';
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/compteur" element={<Layout><Compteur /></Layout>} />
         <Route path="/chronometre" element={<Layout><Chronometre /></Layout>} />
         <Route path="/minuteur" element={<Layout><Minuteur /></Layout>} />
       </Routes>
-    </Router>
+    </>
   );
 }
 
