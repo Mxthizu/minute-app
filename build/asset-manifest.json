@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/minute-app/static/css/main.ec927c0d.css",
+    "main.js": "/minute-app/static/js/main.6e7cf31d.js",
+    "index.html": "/minute-app/index.html",
+    "main.ec927c0d.css.map": "/minute-app/static/css/main.ec927c0d.css.map",
+    "main.6e7cf31d.js.map": "/minute-app/static/js/main.6e7cf31d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec927c0d.css",
+    "static/js/main.6e7cf31d.js"
+  ]
+}
