@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Mxthizu/minute-app.git/static/css/main.ec927c0d.css",
-    "main.js": "/Mxthizu/minute-app.git/static/js/main.225212a5.js",
-    "index.html": "/Mxthizu/minute-app.git/index.html",
-    "main.ec927c0d.css.map": "/Mxthizu/minute-app.git/static/css/main.ec927c0d.css.map",
-    "main.225212a5.js.map": "/Mxthizu/minute-app.git/static/js/main.225212a5.js.map"
+    "main.css": "/static/css/main.ec927c0d.css",
+    "main.js": "/static/js/main.1e859d48.js",
+    "index.html": "/index.html",
+    "main.ec927c0d.css.map": "/static/css/main.ec927c0d.css.map",
+    "main.1e859d48.js.map": "/static/js/main.1e859d48.js.map"
   },
   "entrypoints": [
     "static/css/main.ec927c0d.css",
-    "static/js/main.225212a5.js"
+    "static/js/main.1e859d48.js"
   ]
 }
