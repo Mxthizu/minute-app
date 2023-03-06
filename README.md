@@ -37,6 +37,10 @@ To use the chronometer, click the Start button to begin timing. Click the Stop b
 
 To use the timer, enter the desired duration in minutes and click the Start button. Click the Pause button to pause the timer, and the Reset button to reset the timer. You can also adjust the duration as needed using the input buttons.
 
+## Demo
+
+A live demo of this application is available on the following website: https://mxthizu.github.io/minute-app/
+
 ## Acknowledgements
 
 This project was developed with the help of ChatGPT, a large language model trained by OpenAI. Thank you for your assistance!
