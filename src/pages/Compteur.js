@@ -41,7 +41,7 @@ function Compteur() {
           ))}
         </div>
       )}
-      <button className="export-button" onClick={handleExport}>
+      <button className="button export-button" onClick={handleExport}>
         Exporter les résultats
       </button>
     </div>

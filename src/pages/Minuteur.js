@@ -1,127 +1,122 @@
-import React, { useState, useRef, useEffect } from 'react';
-import '../styles/Minuteur.css';
+import React, { useState, useRef } from 'react';
+import '../styles/App.css';
 import '../variables.css';
+import '../styles/Minuteur.css'
 
-function Minuteur() {
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const [timer, setTimer] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-  const [canStart, setCanStart] = useState(true); // Add canStart state variable
+function Timer() {
+  const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef(null);
 
   const handleStart = () => {
-    if (canStart && (hours > 0 && minutes > 0 && seconds > 0)) {
-      setIsActive(true);
-      setCanStart(false);
+    if (time > 0) {
+      setIsRunning(true);
+      setIsPaused(false);
+      if (!intervalRef.current) {
+        setTime(time);
+      }
+      intervalRef.current = setInterval(() => {
+        setTime((time) => time - 1);
+      }, 1000);
     }
   };  
-  
-  const handleStop = (currentTimer) => {
+
+  const handlePause = () => {
     clearInterval(intervalRef.current);
-    setTimer(currentTimer);
-    setIsActive(false);
-    setCanStart(true);
-  };  
-  
+    setIsPaused(true);
+  };
+
   const handleReset = () => {
-    setHours(0);
-    setMinutes(0);
-    setSeconds(0);
-    setTimer(0);
-    setIsActive(false);
-    setCanStart(true); // Set canStart to true
-    handleStop(); // Stop the timer
+    clearInterval(intervalRef.current);
+    setIsRunning(false);
+    setIsPaused(false);
+    setTime(0);
+    document.querySelectorAll('input[type=number]').forEach(input => input.value = 0);
+    intervalRef.current = null;
+  };   
+
+  const handleHoursChange = (e) => {
+    setTime(
+      e.target.value * 3600 +
+        Math.floor((time - Math.floor(time / 3600) * 3600) / 60) * 60 +
+        Math.floor(time - Math.floor(time / 60) * 60)
+    );
+  };
+
+  const handleMinutesChange = (e) => {
+    setTime(
+      Math.floor(time / 3600) * 3600 +
+        e.target.value * 60 +
+        Math.floor(time - Math.floor(time / 60) * 60)
+    );
+  };
+
+  const handleSecondsChange = (e) => {
+    setTime(
+      Math.floor(time / 3600) * 3600 +
+        Math.floor((time - Math.floor(time / 3600) * 3600) / 60) * 60 +
+        parseInt(e.target.value)
+    );
   };
 
   const formatTime = (time) => {
-    let hours = Math.floor(time / 3600).toString().padStart(2, '0');
-    let minutes = Math.floor((time % 3600) / 60).toString().padStart(2, '0');
-    let seconds = (time % 60).toString().padStart(2, '0');
+    let hours = Math.floor(time / 3600);
+    let minutes = Math.floor((time - hours * 3600) / 60);
+    let seconds = time - hours * 3600 - minutes * 60;
+
+    hours = hours.toString().padStart(2, '0');
+    minutes = minutes.toString().padStart(2, '0');
+    seconds = seconds.toString().padStart(2, '0');
+
     return `${hours}:${minutes}:${seconds}`;
   };
 
-  const handleInputChange = (e) => {
-    const value = parseInt(e.target.value, 10);
-    const name = e.target.name;
-    if (!isNaN(value)) {
-      switch (name) {
-        case 'hours':
-          setHours(value);
-          break;
-        case 'minutes':
-          setMinutes(value);
-          break;
-        case 'seconds':
-          setSeconds(value);
-          break;
-        default:
-          break;
-      }
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const totalSeconds = hours * 3600 + minutes * 60 + seconds;
-    setTimer(totalSeconds);
-    setIsActive(true);
-  };
-
-  useEffect(() => {
-    if (isActive) {
-      intervalRef.current = setInterval(() => {
-        setTimer((timer) => timer - 1);
-      }, 1000);
-    } else {
-      clearInterval(intervalRef.current);
-    }
-
-    return () => {
-      clearInterval(intervalRef.current);
-    };
-  }, [isActive]);
-
   return (
-    <div className="Minuteur">
+    <div className="Timer">
       <h1 className="title">Minuteur</h1>
-      <div className="timer-container">
-        <p className="timer">{formatTime(timer)}</p>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className="minuteur-inputs">
-          <div className="input-container">
-            <label htmlFor="hours">Heures:</label>
-            <input type="number" id="hours" name="hours" min="0" value={hours} onChange={handleInputChange} />
-          </div>
-          <div className="input-container">
-            <label htmlFor="minutes">Minutes:</label>
-            <input type="number" id="minutes" name="minutes" min="0" max="59" value={minutes} onChange={handleInputChange} />
-          </div>
-          <div className="input-container">
-            <label htmlFor="seconds">Secondes:</label>
-            <input type="number" id="seconds" name="seconds" min="0" max="59" value={seconds} onChange={handleInputChange} />
-          </div>
+      <p className="timer">{formatTime(time)}</p>
+      <div className="time-selection">
+        <div>
+          <label>Heures:</label>
+          <input type="number" min="0" max="23" defaultValue={Math.floor(time / 3600)} onChange={handleHoursChange} />
         </div>
-        <div className="button-container">
-          {!isActive ? (
-            <button className="button" onClick={handleStart}>
-              Démarrer
-            </button>
-          ) : (
-            <button className="button" onClick={() => handleStop(timer)}>
-              Arrêter
-            </button>
-          )}
+        <div>
+          <label>Minutes:</label>
+          <input type="number" min="0" max="59" defaultValue={Math.floor((time % 3600) / 60)} onChange={handleMinutesChange} />
+        </div>
+        <div>
+          <label>Secondes:</label>
+          <input type="number" min="0" max="59" defaultValue={time % 60} onChange={handleSecondsChange} />
+        </div>
+      </div>
+      <div className="button-container">
+      {!isRunning && (
+        <button className="button" onClick={handleStart}>
+          Démarrer
+        </button>
+      )}
+      {isRunning && isPaused && (
+        <button className="button" onClick={() => {
+          setIsPaused(false);
+          handleStart();
+        }}>
+          Reprise
+        </button>
+      )}
+        {isRunning && !isPaused && (
+          <button className="button" onClick={handlePause}>
+            Pause
+          </button>
+        )}
+        {(isRunning || isPaused) && (
           <button className="button" onClick={handleReset}>
             Réinitialiser
           </button>
-        </div>
-      </form>
+        )}
+      </div>
     </div>
-  );
-  
+  );   
 }
 
-export default Minuteur;
+export default Timer;

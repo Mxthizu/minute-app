@@ -1,3 +1,8 @@
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
 /* App container */
 .App {
   display: flex;
@@ -25,32 +30,34 @@
 }
 
 /* Button */
-.button {
-  background-color: #90caf9;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.button:hover {
-  background-color: #64b5f6;
-  transform: scale(1.1);
-}
-
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.button-container .button:hover, .button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .button-container button:first-child {
   margin-right: 0.5rem;
-  background-color: #81c784;
+  background-color: #1e90ff;
   color: #ffffff;
 }
 
@@ -59,21 +66,9 @@
   color: #ffffff;
 }
 
-.export-button {
-  background-color: #a2d2ff;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.export-button:hover {
-  background-color: #6ba5e5;
-  transform: scale(1.1);
+.button-disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .saved-counts-container {
@@ -98,4 +93,35 @@
   justify-content: center;
   height: 100vh;
   background-color: var(--background-color);
+}
+
+.Chronometre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.saved-times-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(30px, auto);
+  grid-gap: 10px;
+  margin-top: 30px;
+}
+
+.saved-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2196f3;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.button-delete {
+  background-color: #ff5252;
+  color: #fff;
+  border-color: #ff5252;
 }

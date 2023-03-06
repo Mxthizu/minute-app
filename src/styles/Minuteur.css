@@ -1,98 +1,39 @@
-.Minuteur {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .timer {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-  }
-  
-  .button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    margin: 0.25rem;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .reset-button {
-    background-color: #f44336;
-  }
-  
-  .reset-button:hover {
-    background-color: #d32f2f;
-  }
-  
-  .save-button {
-    background-color: #2196F3;
-  }
-  
-  .save-button:hover {
-    background-color: #1976D2;
-  }
-  
-  .saved-times-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .saved-time {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  input {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-right: 10px;
-  }
-
-.minuteur-inputs {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.minuteur-inputs label {
-  margin-right: 10px;
-}
-
-.minuteur-inputs input {
-  width: 50px;
-  height: 30px;
-  font-size: 20px;
+.Timer {
   text-align: center;
-  margin-right: 10px;
+  margin-top: 50px;
 }
 
-  
+.timer {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.time-selection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.time-selection div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  width: 120px;
+}
+
+.time-selection label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.time-selection input {
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #444;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #fff;
+}
