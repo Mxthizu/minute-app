@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/minute-app/static/css/main.ec927c0d.css",
-    "main.js": "/minute-app/static/js/main.1e859d48.js",
+    "main.css": "/minute-app/static/css/main.3a08225b.css",
+    "main.js": "/minute-app/static/js/main.fb673b92.js",
     "index.html": "/minute-app/index.html",
-    "main.ec927c0d.css.map": "/minute-app/static/css/main.ec927c0d.css.map",
-    "main.1e859d48.js.map": "/minute-app/static/js/main.1e859d48.js.map"
+    "main.3a08225b.css.map": "/minute-app/static/css/main.3a08225b.css.map",
+    "main.fb673b92.js.map": "/minute-app/static/js/main.fb673b92.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec927c0d.css",
-    "static/js/main.1e859d48.js"
+    "static/css/main.3a08225b.css",
+    "static/js/main.fb673b92.js"
   ]
 }
